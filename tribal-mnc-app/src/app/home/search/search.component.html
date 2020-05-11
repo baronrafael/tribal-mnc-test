@@ -1,9 +1,20 @@
 <div fxFill fxLayout="column" fxLayoutAlign="center center">
     <div class="header width-100" fxLayout="column" fxLayoutAlign="center center">
-        <mat-form-field appearance="outline">
-            <mat-label>Search</mat-label>
-            <input matInput>
-        </mat-form-field>
+        <form [formGroup]="searchForm" (ngSubmit)="handleSearch()" class="search-container" fxLayout="row" fxLayoutAlign="center center">
+            <mat-form-field class="input-type" appearance="outline">
+                <mat-label>Type</mat-label>
+                <mat-select formControlName="type">
+                    <mat-option *ngFor="let type of types" [value]="type.value">
+                        {{type.value}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="input-search" appearance="outline">
+                <mat-label>Search</mat-label>
+                <input formControlName="text" matInput>
+            </mat-form-field>
+            <button type="submit" mat-mini-fab color="primary" [disabled]="!searchForm.valid"><mat-icon>search</mat-icon></button>
+        </form>
     </div>
     <div class="content" fxFill fxLayout="column" fxLayoutAlign="center center">
         <span>To see results enter a search ...</span>

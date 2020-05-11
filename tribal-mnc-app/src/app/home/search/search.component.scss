@@ -1,4 +1,26 @@
-mat-form-field.mat-form-field,  table {
+/*mat-form-field.mat-form-field,  table {
     max-width: 540px;
     width: 90%;
+}*/
+
+.search-container {
+    max-width: 540px;
+    width: 90%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.input-type {
+    width: 30%;
+    min-width: 113px;
+    margin-right: 5px;
+}
+
+.input-search {
+    width: 50%;
+    margin-right: 5px;
+}
+
+:host ::ng-deep .mat-form-field-wrapper{
+    padding-bottom: 0;
 }
