@@ -3,7 +3,7 @@
     width: 90%;
 }*/
 
-.search-container {
+.search-container, table {
     max-width: 540px;
     width: 90%;
     margin-top: 30px;
@@ -23,4 +23,50 @@
 
 :host ::ng-deep .mat-form-field-wrapper{
     padding-bottom: 0;
+}
+
+.title {
+    font-size: 2rem;
+    letter-spacing: 1px;
+    font-weight: 300;
+    color: #ed6723;
+}
+
+.subtitle {
+    font-size: 31px;
+    letter-spacing: -1.7px;
+    text-align: center;
+    color: #696c74;
+    font-family: Helvetica, Verdana, Arial, sans-serif;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+table { 
+    color: whitesmoke; 
+    border-collapse: collapse; 
+    font-size: 0.9rem; 
+    border: 1px solid #000; 
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+tr { min-height: 37px; max-height: 37px; height: 37px; background-color: #696c74; }
+
+th, td {
+    padding: 8px; 
+    font-weight: 500; 
+    border-bottom: 1px solid #000; 
+    border: 1px solid #000;
+}
+
+tr:nth-child(even){background-color: #ed6723; }
+
+th, td { border: 1px solid #000; }
+
+tr:hover {
+    background-color: #f2f2f2;
+    cursor: pointer;
+    font-weight: 500;
+    color: #000;
 }

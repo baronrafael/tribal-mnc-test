@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SearchService } from 'src/app/core/services/search.service';
 
 @Component({
   selector: 'app-search',
@@ -22,8 +23,13 @@ export class SearchComponent implements OnInit {
   ];
 
   searchForm: FormGroup;
+  searchResults: any;
+  bSearch = false;
 
-  constructor(private formBuilder: FormBuilder,) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private searchService: SearchService
+  ) { }
 
   ngOnInit(): void {
     this.searchForm = this.formBuilder.group({
@@ -32,8 +38,30 @@ export class SearchComponent implements OnInit {
     });
   }
 
+  spacesToPlus(){
+    let text: string = this.searchForm.get('text').value;
+    return text.replace(/\s+/g, "+");
+  }
+
   handleSearch(){
-    console.log(this.searchForm.value);
+    delete this.searchResults;
+    this.bSearch = true;
+    this.searchService.search(this.searchForm.get('type').value, this.spacesToPlus())
+    .subscribe(
+      res => {
+        console.log(res);
+        this.searchResults = res;
+        this.bSearch = false;
+      },
+      err => {
+        console.log(err);
+        this.bSearch = false;
+      }
+    );
+  }
+
+  select(collectionViewUrl){
+    window.open(collectionViewUrl, '_blank');
   }
 
 }

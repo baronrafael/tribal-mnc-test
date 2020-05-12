@@ -1,4 +1,4 @@
-<div fxFill fxLayout="column" fxLayoutAlign="center center">
+<div class="slide-in-fwd-center" fxFill fxLayout="column" fxLayoutAlign="center center">
     <div class="header width-100" fxLayout="column" fxLayoutAlign="center center">
         <form [formGroup]="searchForm" (ngSubmit)="handleSearch()" class="search-container" fxLayout="row" fxLayoutAlign="center center">
             <mat-form-field class="input-type" appearance="outline">
@@ -16,7 +16,23 @@
             <button type="submit" mat-mini-fab color="primary" [disabled]="!searchForm.valid"><mat-icon>search</mat-icon></button>
         </form>
     </div>
-    <div class="content" fxFill fxLayout="column" fxLayoutAlign="center center">
-        <span>To see results enter a search ...</span>
+    <div class="content slide-in-fwd-center" fxFill fxLayout="column" fxLayoutAlign="center center">
+        <span *ngIf="!searchResults" class="subtitle">To see results enter a search ...</span>
+        <div *ngIf="searchResults" class="width-100 slide-in-fwd-center" fxLayout="column" fxLayoutAlign="none center" style="overflow-x:auto;">
+            <span class="title mt-20">{{searchResults.resultCount}} results</span>
+            <table class="slide-in-fwd-center">
+                <!--<tr><th>Name</th><th>Company</th></tr>-->
+                <ng-container *ngFor="let result of searchResults.results; let i = index">
+                    <tr (click)="select(result.trackViewUrl)">
+                        <td>{{i+1}}</td>
+                        <td><img width="50" src="{{result.artworkUrl100}}" alt=""></td>
+                        <td>{{result.artistName}}</td>
+                    </tr>
+                </ng-container>
+            </table>
+        </div>
+        <div *ngIf="bSearch" class="width-100 mt-50" fxLayout="column" fxLayoutAlign="center center">
+            <span class="heartbeat">Loading</span>
+        </div>
     </div>
 </div>
