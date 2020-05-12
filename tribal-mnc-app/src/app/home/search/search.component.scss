@@ -25,11 +25,12 @@
     padding-bottom: 0;
 }
 
-.title {
+.title, .loading {
     font-size: 2rem;
     letter-spacing: 1px;
     font-weight: 300;
     color: #ed6723;
+    padding-bottom: 30px;
 }
 
 .subtitle {

@@ -21,7 +21,7 @@
         <div *ngIf="searchResults" class="width-100 slide-in-fwd-center" fxLayout="column" fxLayoutAlign="none center" style="overflow-x:auto;">
             <span class="title mt-20">{{searchResults.resultCount}} results</span>
             <table class="slide-in-fwd-center">
-                <!--<tr><th>Name</th><th>Company</th></tr>-->
+                <tr><th>#</th><th>Image</th><th>Artist Name</th></tr>
                 <ng-container *ngFor="let result of searchResults.results; let i = index">
                     <tr (click)="select(result.trackViewUrl)">
                         <td>{{i+1}}</td>
@@ -32,7 +32,7 @@
             </table>
         </div>
         <div *ngIf="bSearch" class="width-100 mt-50" fxLayout="column" fxLayoutAlign="center center">
-            <span class="heartbeat">Loading</span>
+            <span class="loading heartbeat">Loading</span>
         </div>
     </div>
 </div>
